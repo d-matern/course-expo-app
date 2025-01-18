@@ -1,4 +1,4 @@
-import { Button, Image, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, Image, StyleSheet, Text, View } from 'react-native';
 import { Input } from './shared/Input';
 import { Colors, Gaps } from './shared/tokens';
 
