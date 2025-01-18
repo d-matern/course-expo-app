@@ -1,5 +1,6 @@
 import { Button, Image, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Input } from './shared/Input';
+import { Colors, Gaps } from './shared/tokens';
 
 export default function App() {
   return (
@@ -14,8 +15,8 @@ export default function App() {
         </View>
 
         <View style={styles.form}>
-          <Input placeholder='Email' placeholderTextColor='#afb2bf' />
-          <Input placeholder='Пароль' placeholderTextColor='#afb2bf' />
+          <Input placeholder='Email' placeholderTextColor={Colors.gray} />
+          <Input placeholder='Пароль' placeholderTextColor={Colors.gray} />
           <Button title='Войти' />
         </View>
 
@@ -30,16 +31,16 @@ const styles = StyleSheet.create({
     padding: 55,
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#16171d'
+    backgroundColor: Colors.black
   },
   content: {
     alignItems: 'center',
-    gap: 50
+    gap: Gaps.g50
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 16
+    gap: Gaps.g16
   },
   headerLogo: {
     width: 24,
@@ -47,14 +48,15 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     color: 'white',
+    fontSize: 24,
     fontWeight: 800
   },
   form: {
     alignSelf: 'stretch',
-    gap: 16
+    gap: Gaps.g16
   },
   link: {
-    color: 'pink',
+    color: Colors.link,
     backgroundColor: 'transparent'
   }
 });
