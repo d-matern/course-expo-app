@@ -2,18 +2,16 @@ import { Animated, Pressable, PressableProps, StyleSheet, Text, View } from "rea
 import { Colors, Fonts, Radius } from "./tokens";
 
 export function Button({ title, ...props}: PressableProps & { title: string }) {
-    const animatedValue = new Animated.ValueXY({
-        x: 0,
-        y: 0
-    });
+    const animatedValue = new Animated.Value(100);
+    const color = animatedValue.interpolate({
+        inputRange: [0, 100],
+        outputRange: [Colors.primaryHover, Colors.primary]
+    })
 
     Animated.timing(animatedValue, {
-        toValue: {
-            x: 100,
-            y: 100
-        },
+        toValue: 0,
         duration: 2000,
-        useNativeDriver: false // Использование нативного драйвера анимации (не js)
+        useNativeDriver: true // Использование нативного драйвера анимации (не js)
     }).start();
 
     return (
@@ -21,10 +19,7 @@ export function Button({ title, ...props}: PressableProps & { title: string }) {
             <Animated.View
                 style={{
                     ...styles.button,
-                    transform: [
-                        { translateX: animatedValue.x },
-                        { translateY: animatedValue.y }
-                    ]
+                    backgroundColor: color
                 }}
             >
                 <Text style={styles.buttonText}>{title}</Text>
@@ -39,8 +34,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 24,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: Radius.r10,
-        backgroundColor: Colors.primary
+        borderRadius: Radius.r10
     },
     buttonText: {
         color: Colors.white,
