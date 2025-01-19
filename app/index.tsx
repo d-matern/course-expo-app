@@ -1,9 +1,10 @@
 import { Image, StyleSheet, Text, View } from "react-native";
-import { Input } from "./shared/Input";
-import { Colors, Fonts, Gaps } from "./shared/tokens";
-import { Button } from "./shared/Button";
-import { ErrorNotification } from "./shared/error-notification";
+import { Input } from "../shared/Input";
+import { Colors, Fonts, Gaps } from "../shared/tokens";
+import { Button } from "../shared/Button";
+import { ErrorNotification } from "../shared/error-notification";
 import { useState } from "react";
+import { Link } from "expo-router";
 
 export default function App() {
     const [error, setError] = useState<string>();
@@ -19,7 +20,7 @@ export default function App() {
             <View style={styles.content}>
                 <View style={styles.header}>
                     {/* eslint-disable-next-line @typescript-eslint/no-require-imports */}
-                    <Image style={styles.headerLogo} source={require("./assets/favicon.png")} />
+                    <Image style={styles.headerLogo} source={require("../assets/favicon.png")} />
                     <Text style={styles.headerTitle}>Native School</Text>
                 </View>
 
@@ -29,7 +30,9 @@ export default function App() {
                     <Button title="Войти" onPress={alert} />
                 </View>
 
-                <Text style={styles.link}>Восстановить пароль</Text>
+                <Link href="/re-password">
+                    <Text style={styles.link}>Восстановить пароль</Text>
+                </Link>
             </View>
         </View>
     );
