@@ -1,6 +1,7 @@
-import { Button, Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { Input } from './shared/Input';
-import { Colors, Gaps } from './shared/tokens';
+import { Colors, Fonts, Gaps } from './shared/tokens';
+import { Button } from './shared/Button';
 
 export default function App() {
   return (
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     color: 'white',
-    fontSize: 24,
+    fontSize: Fonts.f24,
     fontWeight: 800
   },
   form: {
