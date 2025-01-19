@@ -5,7 +5,8 @@ export const Colors = {
     violetDark: '#2e2d3d',
     primary: '#6c38cc',
     primaryHover: '#452481',
-    link: '#a97bff'
+    link: '#a97bff',
+    red: '#cc384e'
 };
 
 export const Gaps = {

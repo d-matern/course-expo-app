@@ -1,32 +1,21 @@
-import { Alert, Image, Platform, StyleSheet, Text, ToastAndroid, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { Input } from './shared/Input';
 import { Colors, Fonts, Gaps } from './shared/tokens';
 import { Button } from './shared/Button';
+import { ErrorNotification } from './shared/error-notification';
+import { useState } from 'react';
 
 export default function App() {
+  const [error, setError] = useState<string>();
+
   const alert = () => {
-    // Alert.alert(
-    //   "Ошибка",
-    //   "Неверный логин или пароль",
-    //   [
-    //     {
-    //       text: "Хорошо",
-    //       onPress: () => {},
-    //       style: "cancel"
-    //     }
-    //   ]
-    // );
-    if (Platform.OS === 'android') {
-      ToastAndroid.showWithGravity(
-        'Неверный логин или пароль',
-        ToastAndroid.SHORT,
-        ToastAndroid.CENTER
-      );
-    }
+    setError('Неверный логин или пароль');
+    setTimeout(() => setError(undefined), 4000);
   };
 
   return (
     <View style={styles.container}>
+      <ErrorNotification error={error} />
       <View style={styles.content}>
         <View style={styles.header}>
           <Image
