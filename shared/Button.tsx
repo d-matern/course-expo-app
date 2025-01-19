@@ -1,4 +1,4 @@
-import { Animated, Pressable, PressableProps, StyleSheet, Text, View } from "react-native";
+import { Animated, GestureResponderEvent, Pressable, PressableProps, StyleSheet, Text, View } from "react-native";
 import { Colors, Fonts, Radius } from "./tokens";
 
 export function Button({ title, ...props}: PressableProps & { title: string }) {
@@ -6,16 +6,28 @@ export function Button({ title, ...props}: PressableProps & { title: string }) {
     const color = animatedValue.interpolate({
         inputRange: [0, 100],
         outputRange: [Colors.primaryHover, Colors.primary]
-    })
+    });
 
-    Animated.timing(animatedValue, {
-        toValue: 0,
-        duration: 2000,
-        useNativeDriver: true // Использование нативного драйвера анимации (не js)
-    }).start();
+    const fadeIn = (event: GestureResponderEvent) => {
+        Animated.timing(animatedValue, {
+            toValue: 0,
+            duration: 100,
+            useNativeDriver: true // Использование нативного драйвера анимации (не js)
+        }).start();
+        props.onPressIn && props.onPressIn(event);
+    };
+
+    const fadeOut = (event: GestureResponderEvent) => {
+        Animated.timing(animatedValue, {
+            toValue: 100,
+            duration: 100,
+            useNativeDriver: true // Использование нативного драйвера анимации (не js)
+        }).start();
+        props.onPressOut && props.onPressOut(event);
+    };
 
     return (
-        <Pressable {...props}>
+        <Pressable {...props} onPressIn={fadeIn} onPressOut={fadeOut}>
             <Animated.View
                 style={{
                     ...styles.button,
