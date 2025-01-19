@@ -69,6 +69,5 @@ const styles = StyleSheet.create({
     },
     link: {
         color: Colors.link,
-        backgroundColor: "transparent",
     },
 });
