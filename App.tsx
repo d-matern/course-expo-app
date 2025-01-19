@@ -16,7 +16,7 @@ export default function App() {
 
         <View style={styles.form}>
           <Input placeholder='Email' placeholderTextColor={Colors.gray} />
-          <Input placeholder='Пароль' placeholderTextColor={Colors.gray} />
+          <Input placeholder='Пароль' placeholderTextColor={Colors.gray} isPassword />
           <Button title='Войти' />
         </View>
 
