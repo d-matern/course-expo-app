@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Animated, StyleSheet, Text, View } from "react-native";
+import { Animated, StyleSheet, Text } from "react-native";
 import { ErrorNotificationProps } from "./ErrorNotification.props";
 import { Colors, Fonts } from "../tokens";
 
@@ -34,27 +34,27 @@ export function ErrorNotification({ error }: ErrorNotificationProps) {
         <Animated.View
             style={{
                 ...styles.error,
-                transform: [{ translateY: animatedValue }]
+                transform: [{ translateY: animatedValue }],
             }}
             onLayout={onEnter}
         >
             <Text style={styles.errorText}>{error}</Text>
         </Animated.View>
     );
-};
+}
 
 const styles = StyleSheet.create({
     error: {
         padding: 15,
-        position: 'absolute',
+        position: "absolute",
         top: 0,
         left: 0,
         right: 0,
-        backgroundColor: Colors.red
+        backgroundColor: Colors.red,
     },
     errorText: {
         color: Colors.white,
         fontSize: Fonts.f16,
-        textAlign: 'center'
-    }
+        textAlign: "center",
+    },
 });

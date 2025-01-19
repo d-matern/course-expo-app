@@ -8,7 +8,7 @@ export function Input({ isPassword, ...props }: TextInputProps & { isPassword?: 
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
     const toggleShowPassword = () => {
-        setIsPasswordVisible(prev => !prev);
+        setIsPasswordVisible((prev) => !prev);
     };
 
     return (
@@ -18,15 +18,14 @@ export function Input({ isPassword, ...props }: TextInputProps & { isPassword?: 
                 secureTextEntry={isPassword && !isPasswordVisible}
                 {...props}
             />
-            {
-                isPassword &&
-                    <Pressable style={styles.eyeIcon} onPress={toggleShowPassword}>
-                        { isPasswordVisible ? <EyeOpenedIcon /> : <EyeClosedIcon />}
-                    </Pressable>
-            }
+            {isPassword && (
+                <Pressable style={styles.eyeIcon} onPress={toggleShowPassword}>
+                    {isPasswordVisible ? <EyeOpenedIcon /> : <EyeClosedIcon />}
+                </Pressable>
+            )}
         </View>
     );
-};
+}
 
 const styles = StyleSheet.create({
     input: {
@@ -40,8 +39,8 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.violetDark,
     },
     eyeIcon: {
-        position: 'absolute',
+        position: "absolute",
         top: 17,
-        right: 24
-    }
+        right: 24,
+    },
 });
