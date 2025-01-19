@@ -54,7 +54,8 @@ const styles = StyleSheet.create({
     },
     errorText: {
         color: Colors.white,
-        fontSize: Fonts.f16,
         textAlign: "center",
+        fontFamily: 'FiraSans',
+        fontSize: Fonts.f16,
     },
 });

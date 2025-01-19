@@ -4,8 +4,7 @@ import { Link } from "expo-router";
 import { ErrorNotification } from "../../shared/error-notification";
 import { Input } from "../../shared/Input";
 import { Button } from "../../shared/Button";
-import { Colors } from "react-native/Libraries/NewAppScreen";
-import { Fonts, Gaps } from "../../shared/tokens";
+import { Colors, Fonts, Gaps } from "../../shared/tokens";
 
 export default function RePassword() {
     const [error, setError] = useState<string>();
@@ -21,7 +20,7 @@ export default function RePassword() {
             <View style={styles.content}>
                 <View style={styles.header}>
                     {/* eslint-disable-next-line @typescript-eslint/no-require-imports */}
-                    <Image style={styles.headerLogo} source={require("../assets/favicon.png")} />
+                    <Image style={styles.headerLogo} source={require("../../assets/favicon.png")} />
                     <Text style={styles.headerTitle}>Native School</Text>
                 </View>
 

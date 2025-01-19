@@ -30,7 +30,7 @@ export default function App() {
                     <Button title="Войти" onPress={alert} />
                 </View>
 
-                <Link href="/re-password">
+                <Link href="/repassword">
                     <Text style={styles.link}>Восстановить пароль</Text>
                 </Link>
             </View>

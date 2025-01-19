@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 24,
 
         color: Colors.white,
+        fontFamily: 'FiraSans',
         fontSize: Fonts.f16,
 
         borderRadius: Radius.r10,
