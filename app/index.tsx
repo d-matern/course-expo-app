@@ -4,7 +4,7 @@ import { Colors, Fonts, Gaps } from "../shared/tokens";
 import { Button } from "../shared/Button";
 import { ErrorNotification } from "../shared/error-notification";
 import { useState } from "react";
-import { Link } from "expo-router";
+import CustomLink from "../shared/CustomLink";
 
 export default function App() {
     const [error, setError] = useState<string>();
@@ -30,9 +30,7 @@ export default function App() {
                     <Button title="Войти" onPress={alert} />
                 </View>
 
-                <Link href="/repassword">
-                    <Text style={styles.link}>Восстановить пароль</Text>
-                </Link>
+                <CustomLink href="/repassword" text="Восстановить пароль" />
             </View>
         </View>
     );
@@ -66,8 +64,5 @@ const styles = StyleSheet.create({
     form: {
         alignSelf: "stretch",
         gap: Gaps.g16,
-    },
-    link: {
-        color: Colors.link,
     },
 });

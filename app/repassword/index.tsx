@@ -1,10 +1,10 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import { useState } from "react";
-import { Link } from "expo-router";
 import { ErrorNotification } from "../../shared/error-notification";
 import { Input } from "../../shared/Input";
 import { Button } from "../../shared/Button";
 import { Colors, Fonts, Gaps } from "../../shared/tokens";
+import CustomLink from "../../shared/CustomLink";
 
 export default function RePassword() {
     const [error, setError] = useState<string>();
@@ -38,9 +38,7 @@ export default function RePassword() {
                     <Button title="Изменить пароль" onPress={alert} />
                 </View>
 
-                <Link href="/">
-                    <Text style={styles.link}>Войти</Text>
-                </Link>
+                <CustomLink href="/" text="Войти" />
             </View>
         </View>
     );
@@ -74,9 +72,5 @@ const styles = StyleSheet.create({
     form: {
         alignSelf: "stretch",
         gap: Gaps.g16,
-    },
-    link: {
-        color: Colors.link,
-        backgroundColor: "transparent",
     },
 });

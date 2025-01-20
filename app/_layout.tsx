@@ -11,9 +11,9 @@ export default function RootLayout() {
     const insets = useSafeAreaInsets();
     const [loaded, error] = useFonts({
         // eslint-disable-next-line @typescript-eslint/no-require-imports
-        FiraSans: require('../assets/fonts/FiraSans-Regular.ttf'),
+        FiraSans: require("../assets/fonts/FiraSans-Regular.ttf"),
         // eslint-disable-next-line @typescript-eslint/no-require-imports
-        'FiraSans-SemiBold': require('../assets/fonts/FiraSans-SemiBold.ttf'),
+        "FiraSans-SemiBold": require("../assets/fonts/FiraSans-SemiBold.ttf"),
     });
 
     useEffect(() => {
@@ -28,25 +28,25 @@ export default function RootLayout() {
 
     return (
         <SafeAreaProvider>
-            <StatusBar style="light" />        
+            <StatusBar style="light" />
             <Stack
                 screenOptions={{
                     headerShown: false,
                     contentStyle: {
                         paddingTop: insets.top,
                         paddingBottom: insets.bottom,
-                        backgroundColor: Colors.black
-                    }
+                        backgroundColor: Colors.black,
+                    },
                 }}
             >
                 <Stack.Screen name="index" />
                 <Stack.Screen
                     name="repassword/index"
                     options={{
-                        presentation: 'modal',
+                        presentation: "modal",
                     }}
                 />
             </Stack>
         </SafeAreaProvider>
     );
-};
+}

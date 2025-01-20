@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: Colors.white,
-        fontFamily: 'FiraSans',
+        fontFamily: Fonts.regular,
         fontSize: Fonts.f18,
     },
 });
