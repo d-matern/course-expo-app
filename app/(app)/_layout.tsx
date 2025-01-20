@@ -3,9 +3,9 @@ import { useAtomValue } from "jotai";
 import { authAtom } from "../../entities/auth/model/auth.state";
 
 export default function AppLayout() {
-    const { access_token } = useAtomValue(authAtom);
+    const { accessToken } = useAtomValue(authAtom);
 
-    if (!access_token) {
+    if (!accessToken) {
         return <Redirect href="/login" />
     }
 

@@ -7,13 +7,13 @@ import { LoginResponseModel } from './auth-response.models';
 import { API } from '../api/api';
 
 export interface AuthState {
-    access_token: string | null;
+    accessToken: string | null;
     isLoading: boolean;
     error: string | null;
 }
 
 const INITIAL_STATE = {
-    access_token: null,
+    accessToken: null,
     isLoading: false,
     error: null
 };
@@ -35,16 +35,15 @@ export const loginAtom = atom(
                 email,
                 password
             });
-            console.log(data);
             set(authAtom, {
-                access_token: data.access_token,
+                accessToken: data.accessToken,
                 isLoading: false,
                 error: null
             });
         } catch (error) {
             if (error instanceof AxiosError) {
                 set(authAtom, {
-                    access_token: null,
+                    accessToken: null,
                     isLoading: false,
                     error: error.response?.data.message
                 });

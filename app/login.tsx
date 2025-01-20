@@ -3,20 +3,41 @@ import { Input } from "../shared/Input";
 import { Colors, Fonts, Gaps } from "../shared/tokens";
 import { Button } from "../shared/Button";
 import { ErrorNotification } from "../shared/error-notification";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CustomLink from "../shared/CustomLink";
+import { useAtom } from "jotai";
+import { loginAtom } from "../entities/auth/model/auth.state";
+import { router } from "expo-router";
 
 export default function Login() {
-    const [error, setError] = useState<string>();
+    const [email, setEmail] = useState<string>();
+    const [password, setPassword] = useState<string>();
+    const [{ accessToken, error }, login] = useAtom(loginAtom);
+    const [localError, setlocalError] = useState<string>();
 
-    const alert = () => {
-        setError("Неверный логин или пароль");
-        setTimeout(() => setError(undefined), 4000);
+    const handleSubmit = () => {
+        if (!email?.trim() || !password?.trim()) {
+            return;
+        }
+
+        login({ email, password });
     };
+
+    useEffect(() => {
+        if (error) {
+            setlocalError(error);
+        }
+    }, [error]);
+
+    useEffect(() => {
+        if (accessToken) {
+            router.replace('/(app)');
+        }
+    }, [accessToken]);
 
     return (
         <View style={styles.container}>
-            <ErrorNotification error={error} />
+            <ErrorNotification error={localError} />
             <View style={styles.content}>
                 <View style={styles.header}>
                     {/* eslint-disable-next-line @typescript-eslint/no-require-imports */}
@@ -25,9 +46,18 @@ export default function Login() {
                 </View>
 
                 <View style={styles.form}>
-                    <Input placeholder="Email" placeholderTextColor={Colors.gray} />
-                    <Input placeholder="Пароль" placeholderTextColor={Colors.gray} isPassword />
-                    <Button title="Войти" onPress={alert} />
+                    <Input
+                        placeholder="Email"
+                        placeholderTextColor={Colors.gray}
+                        onChangeText={setEmail}
+                    />
+                    <Input
+                        placeholder="Пароль"
+                        placeholderTextColor={Colors.gray}
+                        isPassword
+                        onChangeText={setPassword}
+                    />
+                    <Button title="Войти" onPress={handleSubmit} />
                 </View>
 
                 <CustomLink href="/repassword" text="Восстановить пароль" />
