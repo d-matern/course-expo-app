@@ -30,6 +30,7 @@ export default function App() {
                     <Button title="Войти" onPress={alert} />
                 </View>
 
+                <CustomLink href="/course/1" text="Первый курс" />
                 <CustomLink href="/repassword" text="Восстановить пароль" />
             </View>
         </View>
