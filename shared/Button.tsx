@@ -1,4 +1,5 @@
 import {
+    ActivityIndicator,
     Animated,
     GestureResponderEvent,
     Pressable,
@@ -8,7 +9,9 @@ import {
 } from "react-native";
 import { Colors, Fonts, Radius } from "./tokens";
 
-export function Button({ title, ...props }: PressableProps & { title: string }) {
+interface InternalProps { title: string; isLoading?: boolean; };
+
+export function Button({ title, isLoading, ...props }: PressableProps & InternalProps) {
     const animatedValue = new Animated.Value(100);
     const color = animatedValue.interpolate({
         inputRange: [0, 100],
@@ -47,7 +50,8 @@ export function Button({ title, ...props }: PressableProps & { title: string }) 
                     backgroundColor: color,
                 }}
             >
-                <Text style={styles.buttonText}>{title}</Text>
+                {!isLoading && <Text style={styles.buttonText}>{title}</Text>}
+                {isLoading && <ActivityIndicator size="small" color={Colors.white} />}
             </Animated.View>
         </Pressable>
     );

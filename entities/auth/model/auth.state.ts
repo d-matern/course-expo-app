@@ -28,7 +28,7 @@ export const authAtom = atomWithStorage<AuthState>(
 export const loginAtom = atom(
     (get) => get(authAtom),
     async (_get, set, { email, password }: LoginRequestModel) => {
-        set(authAtom, INITIAL_STATE);
+        set(authAtom, { ...INITIAL_STATE, isLoading: true });
 
         try {
             const { data } = await axios.post<LoginResponseModel>(API.login, {
@@ -36,15 +36,13 @@ export const loginAtom = atom(
                 password
             });
             set(authAtom, {
+                ...INITIAL_STATE,
                 accessToken: data.accessToken,
-                isLoading: false,
-                error: null
             });
         } catch (error) {
             if (error instanceof AxiosError) {
                 set(authAtom, {
-                    accessToken: null,
-                    isLoading: false,
+                    ...INITIAL_STATE,
                     error: error.response?.data.message
                 });
             }

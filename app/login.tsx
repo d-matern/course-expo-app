@@ -12,7 +12,7 @@ import { router } from "expo-router";
 export default function Login() {
     const [email, setEmail] = useState<string>();
     const [password, setPassword] = useState<string>();
-    const [{ accessToken, error }, login] = useAtom(loginAtom);
+    const [{ accessToken, isLoading, error }, login] = useAtom(loginAtom);
     const [localError, setlocalError] = useState<string>();
 
     const handleSubmit = () => {
@@ -57,7 +57,11 @@ export default function Login() {
                         isPassword
                         onChangeText={setPassword}
                     />
-                    <Button title="Войти" onPress={handleSubmit} />
+                    <Button
+                        title="Войти"
+                        isLoading={isLoading}
+                        onPress={handleSubmit}
+                    />
                 </View>
 
                 <CustomLink href="/repassword" text="Восстановить пароль" />
