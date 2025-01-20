@@ -6,7 +6,7 @@ import { ErrorNotification } from "../shared/error-notification";
 import { useState } from "react";
 import CustomLink from "../shared/CustomLink";
 
-export default function App() {
+export default function Login() {
     const [error, setError] = useState<string>();
 
     const alert = () => {
