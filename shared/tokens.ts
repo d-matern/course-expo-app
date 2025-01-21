@@ -1,5 +1,6 @@
 export const Colors = {
     black: "#16171d",
+    blackLight: "#1e1f29",
     white: "#fafafa",
     gray: "#afb2bf",
     violetDark: "#2e2d3d",
@@ -21,6 +22,7 @@ export const Radius = {
 export const Fonts = {
     f16: 16,
     f18: 18,
+    f20: 20,
     f24: 24,
     regular: "FiraSans",
     semiBold: "FiraSans-SemiBold",
