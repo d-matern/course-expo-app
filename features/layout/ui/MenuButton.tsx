@@ -17,14 +17,14 @@ export default function MenuButton({ navigation, ...props }: PressableProps & { 
             <View
                 style={{
                     ...styles.button,
-                    backgroundColor: clicked ? Colors.violetDark : Colors.blackLight
+                    backgroundColor: clicked ? Colors.violetDark : Colors.blackLight,
                 }}
             >
                 <MenuIcon />
             </View>
         </Pressable>
     );
-};
+}
 
 const styles = StyleSheet.create({
     button: {
@@ -32,5 +32,5 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-    }
+    },
 });

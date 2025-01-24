@@ -9,7 +9,10 @@ import {
 } from "react-native";
 import { Colors, Fonts, Radius } from "./tokens";
 
-interface InternalProps { title: string; isLoading?: boolean; };
+interface InternalProps {
+    title: string;
+    isLoading?: boolean;
+}
 
 export function Button({ title, isLoading, ...props }: PressableProps & InternalProps) {
     const animatedValue = new Animated.Value(100);

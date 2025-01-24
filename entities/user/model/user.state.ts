@@ -5,13 +5,13 @@ export interface UserState {
     profile: UserModel | null;
     isLoading: boolean;
     error: string | null;
-};
+}
 
 export const profileAtom = atom<UserState>({
     profile: {
         id: 1,
-        name: 'Денис'
+        name: "Денис",
     },
     isLoading: false,
-    error: null
+    error: null,
 });

@@ -7,15 +7,13 @@ export default function CoursePage() {
 
     return (
         <View>
-            <Text style={styles.title}>
-                Страница курса №: {id}
-            </Text>
+            <Text style={styles.title}>Страница курса №: {id}</Text>
         </View>
     );
-};
+}
 
 const styles = StyleSheet.create({
     title: {
-        color: Colors.white
-    }
+        color: Colors.white,
+    },
 });

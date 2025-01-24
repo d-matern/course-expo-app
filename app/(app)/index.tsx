@@ -9,16 +9,14 @@ export default function MyCourses() {
 
     return (
         <View>
-            <Text style={styles.title}>
-                Курсы
-            </Text>
+            <Text style={styles.title}>Курсы</Text>
             <Button title="Выйти" onPress={logout} />
         </View>
     );
-};
+}
 
 const styles = StyleSheet.create({
     title: {
-        color: Colors.white
-    }
+        color: Colors.white,
+    },
 });

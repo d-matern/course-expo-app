@@ -1,10 +1,10 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { atom } from 'jotai';
-import { atomWithStorage, createJSONStorage } from 'jotai/utils';
-import { LoginRequestModel } from './auth-request.models';
-import axios, { AxiosError } from 'axios';
-import { LoginResponseModel } from './auth-response.models';
-import { API } from '../api/api';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { atom } from "jotai";
+import { atomWithStorage, createJSONStorage } from "jotai/utils";
+import { LoginRequestModel } from "./auth-request.models";
+import axios, { AxiosError } from "axios";
+import { LoginResponseModel } from "./auth-response.models";
+import { API } from "../api/api";
 
 export interface AuthState {
     accessToken: string | null;
@@ -15,15 +15,11 @@ export interface AuthState {
 const INITIAL_STATE = {
     accessToken: null,
     isLoading: false,
-    error: null
+    error: null,
 };
 const storage = createJSONStorage<AuthState>(() => AsyncStorage);
 
-export const authAtom = atomWithStorage<AuthState>(
-    'auth',
-    INITIAL_STATE,
-    storage
-);
+export const authAtom = atomWithStorage<AuthState>("auth", INITIAL_STATE, storage);
 
 export const loginAtom = atom(
     (get) => get(authAtom),
@@ -33,7 +29,7 @@ export const loginAtom = atom(
         try {
             const { data } = await axios.post<LoginResponseModel>(API.login, {
                 email,
-                password
+                password,
             });
             set(authAtom, {
                 ...INITIAL_STATE,
@@ -43,16 +39,13 @@ export const loginAtom = atom(
             if (error instanceof AxiosError) {
                 set(authAtom, {
                     ...INITIAL_STATE,
-                    error: error.response?.data.message
+                    error: error.response?.data.message,
                 });
             }
         }
-    }
+    },
 );
 
-export const logoutAtom = atom(
-    null,
-    (_get, set) => {
-        set(authAtom, INITIAL_STATE);
-    }
-);
+export const logoutAtom = atom(null, (_get, set) => {
+    set(authAtom, INITIAL_STATE);
+});

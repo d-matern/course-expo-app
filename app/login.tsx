@@ -1,6 +1,6 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Input } from "../shared/Input";
-import { Colors, Fonts, Gaps } from "../shared/tokens";
+import { Colors, Gaps } from "../shared/tokens";
 import { Button } from "../shared/Button";
 import { ErrorNotification } from "../shared/error-notification";
 import { useEffect, useState } from "react";
@@ -8,6 +8,7 @@ import CustomLink from "../shared/CustomLink";
 import { useAtom } from "jotai";
 import { loginAtom } from "../entities/auth/model/auth.state";
 import { router } from "expo-router";
+import Logo from "../shared/Logo";
 
 export default function Login() {
     const [email, setEmail] = useState<string>();
@@ -31,7 +32,7 @@ export default function Login() {
 
     useEffect(() => {
         if (accessToken) {
-            router.replace('/(app)');
+            router.replace("/(app)");
         }
     }, [accessToken]);
 
@@ -39,11 +40,7 @@ export default function Login() {
         <View style={styles.container}>
             <ErrorNotification error={localError} />
             <View style={styles.content}>
-                <View style={styles.header}>
-                    {/* eslint-disable-next-line @typescript-eslint/no-require-imports */}
-                    <Image style={styles.headerLogo} source={require("../assets/favicon.png")} />
-                    <Text style={styles.headerTitle}>Native School</Text>
-                </View>
+                <Logo />
 
                 <View style={styles.form}>
                     <Input
@@ -57,11 +54,7 @@ export default function Login() {
                         isPassword
                         onChangeText={setPassword}
                     />
-                    <Button
-                        title="Войти"
-                        isLoading={isLoading}
-                        onPress={handleSubmit}
-                    />
+                    <Button title="Войти" isLoading={isLoading} onPress={handleSubmit} />
                 </View>
 
                 <CustomLink href="/repassword" text="Восстановить пароль" />
@@ -80,20 +73,6 @@ const styles = StyleSheet.create({
     content: {
         alignItems: "center",
         gap: Gaps.g50,
-    },
-    header: {
-        flexDirection: "row",
-        alignItems: "center",
-        gap: Gaps.g16,
-    },
-    headerLogo: {
-        width: 24,
-        height: 24,
-    },
-    headerTitle: {
-        color: "white",
-        fontSize: Fonts.f24,
-        fontWeight: 800,
     },
     form: {
         alignSelf: "stretch",
