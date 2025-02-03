@@ -25,6 +25,7 @@ export default function UserMenu({ user }: { user: UserModel | null }) {
 const styles = StyleSheet.create({
     container: {
         marginTop: 30,
+        marginBottom: 40,
         alignItems: "center",
         gap: Gaps.g8,
     },

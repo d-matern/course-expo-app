@@ -5,7 +5,7 @@ import { authAtom } from "../../entities/auth/model/auth.state";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Colors, Fonts } from "../../shared/tokens";
 import MenuButton from "../../features/layout/ui/MenuButton";
-import CustomDrawer from "../../entities/layout/ui/CustomDrawer";
+import CustomDrawer from "../../widget/layout/ui/CustomDrawer";
 
 export default function AppLayout() {
     const { accessToken } = useAtomValue(authAtom);
@@ -39,6 +39,7 @@ export default function AppLayout() {
                 })}
             >
                 <Drawer.Screen name="index" options={{ title: "Мои курсы" }} />
+                <Drawer.Screen name="profile" options={{ title: "Мой профиль" }} />
             </Drawer>
         </GestureHandlerRootView>
     );

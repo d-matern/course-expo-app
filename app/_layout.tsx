@@ -11,7 +11,7 @@ export default function RootLayout() {
     const insets = useSafeAreaInsets();
     const [loaded, error] = useFonts({
         // eslint-disable-next-line @typescript-eslint/no-require-imports
-        FiraSans: require("../assets/fonts/FiraSans-Regular.ttf"),
+        "FiraSans-Regular": require("../assets/fonts/FiraSans-Regular.ttf"),
         // eslint-disable-next-line @typescript-eslint/no-require-imports
         "FiraSans-SemiBold": require("../assets/fonts/FiraSans-SemiBold.ttf"),
     });
